@@ -1,0 +1,81 @@
+.navbar {
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--topnav-height);
+}
+
+.navbar-search {
+  position: relative;
+  height: 50px;
+  background-color: var(--main-bg);
+  display: flex;
+  align-items: center;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.navbar-search > input {
+  height: 100%;
+  width: 100%;
+  padding: 10px 60px 10px 20px;
+  font-size: 1rem;
+  border-radius: var(--border-radius);
+  color: var(--txt-color);
+  background-color: var(--main-bg);
+}
+
+.navbar-search > i {
+  font-size: 1.5rem;
+  position: absolute;
+  right: 1.25rem;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-right ~ .navbar-right {
+  margin-left: 1.875rem;
+}
+
+.notification-item {
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.notification-item:hover {
+  background-color: var(--second-bg);
+}
+
+.notification-item > i {
+  margin-right: 1.25rem;
+  font-size: 1.5rem;
+}
+
+.navbar-right-user {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-right-user-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.navbar-right-user-image > img {
+  width: 100%;
+}
+
+.navbar-right-user-name {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-right: 1rem;
+}

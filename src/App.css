@@ -1,9 +1,13 @@
-* {
-  margin: 0;
-  padding: 0;
+.layout {
+  color: var(--txt-color);
 }
 
-.app {
-  text-align: center;
-  background-color: #282c34;
+.layout-content {
+  padding-left: var(--sidebar-width);
+  background-color: var(--second-bg);
+  min-height: 100vh;
+}
+
+.layout-content-main {
+  padding: 30px;
 }
