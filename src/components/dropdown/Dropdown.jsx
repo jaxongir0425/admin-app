@@ -22,7 +22,6 @@ const Dropdown = (props) => {
   return (
     <>
       <div className="dropdown">
-        {console.log("sda", props.customToggle)}
         <button ref={dropdown_toggle_el} className="dropdown-toggle">
           {props.icon ? <i className={props.icon}></i> : ""}
           {props.badge ? (

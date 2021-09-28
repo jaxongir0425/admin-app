@@ -1,0 +1,6 @@
+{
+  "shipping": "primary",
+  "pending": "warning",
+  "paid": "success",
+  "refund": "danger"
+}

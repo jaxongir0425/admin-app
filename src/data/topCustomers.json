@@ -1,0 +1,30 @@
+{
+  "head": ["user", "total orders", "total spending"],
+  "body": [
+    {
+      "username": "CR7",
+      "order": "4",
+      "price": "$19.50"
+    },
+    {
+      "username": "Leo Messi",
+      "order": "12",
+      "price": "$40.95"
+    },
+    {
+      "username": "david luiz",
+      "order": "32",
+      "price": "$22.80"
+    },
+    {
+      "username": "tiago silva",
+      "order": "15",
+      "price": "$83.80"
+    },
+    {
+      "username": "bruno",
+      "order": "7",
+      "price": "$54.10"
+    }
+  ]
+}

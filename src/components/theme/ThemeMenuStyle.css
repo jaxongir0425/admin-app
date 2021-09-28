@@ -1,34 +1,62 @@
-.light-background {
-  background-color: var(--main-bg-light);
-  color: #000;
+.theme-menu {
+  position: fixed;
+  right: -300px;
+  top: 0;
+  width: 300px;
+  height: 100vh;
+  padding: 20px;
+  z-index: 999;
+  background-color: var(--main-bg);
+  box-shadow: var(--box-shadow);
+  transition: right 0.5s var(--transition-cubic);
 }
 
-.dark-background {
-  background-color: var(--main-bg-dark);
-  color: #fff;
+.theme-menu.active {
+  right: 0;
 }
 
-.blue-color {
-  background-color: var(--main-color-blue);
-  color: #fff;
+.theme-menu-close {
+  position: absolute;
+  top: 17px;
+  right: 20px;
+  background-color: transparent;
+  font-size: 1.5rem;
 }
 
-.red-color {
-  background-color: var(--main-color-red);
-  color: #fff;
+.theme-menu-select {
+  margin-top: 2.5rem;
 }
 
-.cyan-color {
-  background-color: var(--main-color-cyan);
-  color: #fff;
+.mode-list {
+  margin-top: 1.25rem;
 }
 
-.green-color {
-  background-color: var(--main-color-green);
-  color: #fff;
+.mode-list > li {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
-.orange-color {
-  background-color: var(--main-color-orange);
-  color: #fff;
+.mode-list > li ~ li {
+  margin-top: 0.625rem;
+}
+
+.mode-list-color {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0.625rem;
+  font-size: 1.5rem;
+}
+
+.mode-list-color > i {
+  transform: scale(0);
+  transition: transform 0.5s var(--transition-cubic);
+}
+
+.mode-list-color.active > i {
+  transform: scale(1);
 }

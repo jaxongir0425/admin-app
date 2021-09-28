@@ -1,86 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Chart from "react-apexcharts";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import Badge from "../components/badge/Badge";
 import StatusCard from "../components/status-card/StatusCard";
 import Table from "../components/table/Table";
+import ThemeAction from "../redux/actions/ThemeAction";
+
 import status_card from "../data/status-card-data.json";
-
-const chartOptions = {
-  series: [
-    {
-      name: "Online Customers",
-      data: [40, 70, 20, 90, 36, 80, 30, 91, 60],
-    },
-    {
-      name: "Store Customers",
-      data: [40, 30, 70, 80, 40, 16, 40, 20, 51, 10],
-    },
-  ],
-  options: {
-    color: ["#6ab04c", "#2980b9"],
-    chart: {
-      background: "transparent",
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    stroke: {
-      curve: "smooth",
-    },
-    xaxis: {
-      categories: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-      ],
-    },
-    legend: {
-      position: "top",
-    },
-    grid: {
-      show: false,
-    },
-  },
-};
-
-const topCustomers = {
-  head: ["user", "total orders", "total spending"],
-  body: [
-    {
-      username: "CR7",
-      order: "4",
-      price: "$19.50",
-    },
-    {
-      username: "Leo Messi",
-      order: "12",
-      price: "$40.95",
-    },
-    {
-      username: "david luiz",
-      order: "32",
-      price: "$22.80",
-    },
-    {
-      username: "tiago silva",
-      order: "15",
-      price: "$83.80",
-    },
-    {
-      username: "bruno",
-      order: "7",
-      price: "$54.10",
-    },
-  ],
-};
+import chartOptions from "../data/chartOptions.json";
+import topCustomers from "../data/topCustomers.json";
+import latestOrders from "../data/latestOrders.json";
+import orderStatus from "../data/orderStatus.json";
 
 const customerHead = (item, index) => <th key={index}>{item}</th>;
 
@@ -91,54 +22,6 @@ const customerBody = (item, index) => (
     <td>{item.price}</td>
   </tr>
 );
-
-const latestOrders = {
-  header: ["order id", "user", "total price", "date", "status"],
-  body: [
-    {
-      id: "#OD1711",
-      user: "john doe",
-      date: "17 Jun 2021",
-      price: "$900",
-      status: "shipping",
-    },
-    {
-      id: "#OD1712",
-      user: "frank iva",
-      date: "1 Jun 2021",
-      price: "$400",
-      status: "paid",
-    },
-    {
-      id: "#OD1713",
-      user: "anthony baker",
-      date: "27 Jun 2021",
-      price: "$200",
-      status: "pending",
-    },
-    {
-      id: "#OD1712",
-      user: "frank iva",
-      date: "1 Jun 2021",
-      price: "$400",
-      status: "paid",
-    },
-    {
-      id: "#OD1713",
-      user: "anthony baker",
-      date: "27 Jun 2021",
-      price: "$200",
-      status: "refund",
-    },
-  ],
-};
-
-const orderStatus = {
-  shipping: "primary",
-  pending: "warning",
-  paid: "success",
-  refund: "danger",
-};
 
 const orderHead = (item, index) => <th key={index}>{item}</th>;
 
@@ -155,6 +38,14 @@ const orderBody = (item, index) => (
 );
 
 const Dashboard = () => {
+  const themeReducer = useSelector((state) => state.ThemeReducer.mode);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(ThemeAction.getTheme());
+  });
+
   return (
     <>
       <div>
@@ -176,7 +67,11 @@ const Dashboard = () => {
           <div className="col-6">
             <div className="card full-height">
               <Chart
-                options={chartOptions.options}
+                options={
+                  themeReducer === "theme-mode-dark"
+                    ? { ...chartOptions.options, theme: { mode: "dark" } }
+                    : { ...chartOptions.options, theme: { mode: "light" } }
+                }
                 series={chartOptions.series}
                 type="line"
                 height="100%"

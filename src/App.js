@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
@@ -13,11 +13,26 @@ import Inventory from "./pages/Inventory";
 import Settings from "./pages/Settings";
 import Navbar from "./components/navbar/Navbar";
 
+import { useSelector, useDispatch } from "react-redux";
+import ThemeAction from "./redux/actions/ThemeAction";
+
 function App() {
+  const themeReducer = useSelector((state) => state.ThemeReducer);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const themeClass = localStorage.getItem("themeMode", "theme-mode-light");
+    dispatch(ThemeAction.setMode(themeClass));
+
+    const colorClass = localStorage.getItem("colorMode", "theme-mode-light");
+    dispatch(ThemeAction.setColor(colorClass));
+  }, [dispatch]);
+
   return (
     <>
       <Router>
-        <div className="layout">
+        <div className={`layout ${themeReducer.mode} ${themeReducer.color}`}>
           <Sidebar />
           <div className="layout-content">
             <Navbar />

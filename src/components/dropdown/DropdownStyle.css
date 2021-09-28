@@ -13,6 +13,7 @@
 .dropdown-toggle > i {
   font-size: 2.5rem;
   color: var(--txt-color);
+  margin-right: 0.85rem;
 }
 
 .dropdown-toggle-badge {
